@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta charset="utf-8">
+
+        <title>Daniela Garcia</title>
+
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <link href="css/twentytwenty.css" rel="stylesheet" type="text/css" />        
+        <link rel="icon" href="img/logo.png" type="image/x-icon"/>  
+        
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/index.js"></script>
+     
+        <script src="js/jquery.event.move.js"></script>
+        <script src="js/jquery.twentytwenty.js"></script>
+        
+</head>
+
+  <body>
+         <div data-role="page" data-ajax="false" id="votaciones" class="main-content animated fadeInLeft">
+               
+               <div class="tabBar" data-role="header" data-position="fixed" style=" background: #5f5d8e none repeat scroll 0 0; color: white; margin: 0 !important; padding-bottom: 0 !important; padding-left: 0 !important; padding-right: 0 !important; padding-top: 9px; text-align: left;">
+                  <h1 style="color:white; text-transform: uppercase;">Daniela Garcia</h1>
+               </div>
+                           
+               <div data-role="main" class="ui-content">
+                    <div id="rsstable">
+                     <table style="width: 100%;">
+                        <tbody id="Table1"><!--  --></tbody>
+                      </table>
+                    </div>
+               </div>
+               <div class="tabBar background-color-lightGray color-midGray" data-role="footer"data-position="fixed">
+                        <div>
+                          <ul>
+                               <li class="active">
+                                  <a href="principal.html" data-ajax="false"><i class="material-icons md-20">home</i></a>
+                              </li>
+                              <li>
+                                  <a href="quiensoy.html" data-ajax="false"><i class="material-icons md-20">person</i></a>
+                              </li>
+
+                              <li>
+                                  <a href="asesores.html" data-ajax="false"><i class="material-icons md-20">group</i></a>
+                              </li>
+                              <li>
+                                  <a href="contacto.html" data-ajax="false"><i class="material-icons md-20">mail</i></a>
+                              </li>
+                            <li>
+                                <a id="salir" onclick="salir()" data-ajax="false"><i class="material-icons md-20">settings_power</i></a>
+                            </li>
+                          </ul>
+                       </div>
+                </div>
+             
+         </div>
+  </body>
+<script type="text/javascript">
+  $(document).on('pageinit', '#votaciones', function(){
+
+
+$.ajax({
+      url: 'https://query.yahooapis.com/v1/public/yql?q=SELECT * FROM feed WHERE url="http://danielagarcia.com.ar/category/votaciones/feed/"&format=json&diagnostics=true&callback=',
+
+      dataType: "json",
+      async: true,
+      
+      beforeSend: function() {
+          $.mobile.loading('show', {
+                  theme: "a",
+                  textonly: false,
+                  textVisible: false
+             });
+          },
+      complete: function() {
+           $.mobile.loading('hide', {});
+      },
+
+      success: function (resultados) {
+          if(resultados.query.results != null){
+            if(resultados.query.count > 1){
+              var items = resultados.query.results.item;
+              for(var i in items) {
+                 agregar(items[i]);
+              }
+            } else {
+              agregar(resultados.query.results.item);
+            }
+          }
+      }
+});
+
+function agregar(resultado){
+
+  var contenido = resultado.encoded;
+
+
+  var inicio = contenido.indexOf("<img"); 
+  
+  var jpg = contenido.indexOf(".jpg", inicio); 
+  var png = contenido.indexOf(".png", inicio); 
+  var fin = -1;
+  var imagen = '';
+
+  if(jpg < 0 && png < 0){
+    console.log("No hay imagen.");
+    inicio = -1;
+  } else if(jpg < 0){
+    jpg = png;
+  } else if(png < 0){
+    png = jpg;
+  }
+
+  if(png < jpg){
+    fin = png + 4;
+  }
+
+  if(jpg < png){
+    fin = jpg + 4;
+  }
+
+  if(jpg == png){
+    fin = jpg + 4;
+  }
+  
+
+  console.log("Fin: " + inicio);  
+  console.log("Inicio: " + fin);  
+
+  if(inicio > 0){
+      imagen = contenido.substr(inicio, fin - inicio);
+      inicio = imagen.indexOf("src=") + 5;
+      imagen = imagen.substr(inicio);
+
+      console.log(imagen);
+
+  }
+
+  html =  '<tr id="' +  + '">'; 
+  html += '<td width="5%">'; 
+  html += '</td>'; 
+  html += '<td width="100%">'; 
+  html += '<a href="' + resultado.link + '" class="rssproitemtitle">'+ '<br/><h3 style="text-transform:uppercase">' +resultado.title +'</h3>'+'</a>'; 
+  
+  if(imagen != ''){
+    html += '<br/><br/><img src="'+ imagen +'"/><br/>'; 
+  }
+  
+  html += '<p style="text-align:justify;">'+ resultado.description +'</p>';
+  html += '<a href="' + resultado.link + '" class="rssproitemtitle">'+ '<br/><h6 style="text-transform:uppercase">' +'leer mas..' +'</h3>'+'</a>';
+  html += '<a>'+ '<br/><h6 style="text-transform:uppercase">'+'Creado por ' + resultado.creator +'</h6>'+'</a>';  
+  html += '</td>'; 
+  html += '</tr>'; 
+  $('#Table1').append(html);
+
+}
+
+});
+
+</script>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta charset="utf-8">
+
+        <title>Daniela Garcia</title>
+
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <link href="css/twentytwenty.css" rel="stylesheet" type="text/css" />        
+        <link rel="icon" href="img/logo.png" type="image/x-icon"/>  
+         <link href="css/jquery.msgbox.css" rel="stylesheet"/>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/jquery.msgbox.min.js"><!-- --></script>
+       
+        <script src="js/jquery.event.move.js"></script>
+        <script src="js/jquery.twentytwenty.js"></script>
+        
+</head>
+<body>
+       <div data-role="page" data-ajax="false" id="contacto" class="main-content animated fadeInLeft">
+            
+              <div class="tabBar" data-role="header" data-position="fixed" style=" background: #5f5d8e none repeat scroll 0 0; color: white; margin: 0 !important; padding-bottom: 0 !important; padding-left: 0 !important; padding-right: 0 !important; padding-top: 9px; text-align: left;" >
+                <h1 style="color:white; text-transform: uppercase;">Daniela Garcia</h1>
+             </div>
+             
+             <div data-role="main" class="ui-content">
+
+                    <h1 style="color:#5f5d8e; text-transform: uppercase;text-align:left;">Contacto</h1>
+                    <p class="normal">
+                    Si desea realizar una consulta o denunciar un caso particular, nos comunicaremos con usted rellenando el siguiente 
+                    <strong>formulario de contacto</strong>.
+                    </p>
+                    
+                    <div id="nombre_error" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content popups">
+                        <a href="#" id="nombre_error_c" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+                        Falta su nombre
+                    </div>
+                    <div id="email_error" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content popups">
+                    <a href="#" id="email_error_c" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+                       Email no v&aacute;lido
+                   </div>
+                    <div id="email_vacio" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content popups">
+                      <a href="#" id="email_vacio_c" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+                      Falta su email
+                   </div>
+                    <div id="asunto_error" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content popups">
+                          <a href="#" id="asunto_error_c" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+                          Falta el asunto
+                    </div>
+                    <div id="mensaje_error" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content popups">
+                      <a href="#" id="mensaje_error_c" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+                      No hay mensaje
+                    </div>
+                    <div id="mensaje_no_enviado" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content popup_mensaje_correcto">
+                        <a href="#" id="mensaje_no_enviado_c" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+                        Mensaje no enviado. Int&eacute;ntelo de nuevo.
+                    </div>
+                    <div id="mensaje_enviado" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content popup_mensaje_correcto">
+                      Mensaje enviado correctamente
+                      <a href="#home" id="mensaje_enviado_c" data-role="button" data-theme="a" data-icon="back" data-direction="reverse">Inicio</a>
+                     </div>
+                      <form id="form-message">
+                         <div class="ui-body ui-body-a">
+                             <div data-role="fieldcontain">
+                             <label for="nombre">Nombre</label>
+                             <input type="text" name="nombre" id="nombre" placeholder="Nombre y apellidos" />
+                             </div>
+                             <div data-role="fieldcontain">
+                             <label for="email">Email</label>
+                             <input type="text" name="mail" id="mail" placeholder="ejemplo@dominio.com" />
+                             </div>
+                             <div data-role="fieldcontain">
+                             <label for="asunto">Asunto</label>
+                             <input type="text" name="asunto" id="asunto" placeholder="Indique el asunto de su mensaje" />
+                             </div>
+                             <div data-role="fieldcontain">
+                             <label for="mensaje">Mensaje</label>
+                             <textarea cols="30" rows="5" name="mensaje" id="mensaje" ></textarea>
+                             </div>
+                             <button type="button" id="submit" name="submit" value="submit-value">Enviar</button>
+                         </div>
+                      </form>
+             </div>
+
+             <div data-role="navbar" data-iconpos="">
+                    <ul>
+                        <li>
+                            <a href="facebook.html" data-ajax="false" style="background: #3b5998; border-color: white; color: white">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="twitter.html" data-ajax="false" style="background: #00aced; border-color: white; color: white">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="instagram.html" data-ajax="false" style="background: #517fa4; border-color: white; color: white">Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             
+             <div class="tabBar background-color-lightGray color-midGray" data-role="footer"data-position="fixed">
+                      <div>
+                        <ul>
+                             <li >
+                                <a href="principal.html" data-ajax="false"><i class="material-icons md-20">home</i></a>
+                            </li>
+                            <li>
+                                <a href="quiensoy.html" data-ajax="false"><i class="material-icons md-20">person</i></a>
+                            </li>
+
+                            <li>
+                                <a href="asesores.html" data-ajax="false"><i class="material-icons md-20">group</i></a>
+                            </li>
+                            <li  class="active">
+                                <a href="contacto.html" data-ajax="false"><i class="material-icons md-20">mail</i></a>
+                            </li>
+                            <li>
+                                <a id="salir" onclick="salir()" data-ajax="false"><i class="material-icons md-20">settings_power</i></a>
+                            </li>
+                        </ul>
+                     </div>
+              </div>
+           
+       </div>
+  
+      
+</body>
+
+<script type="text/javascript">
+   $(document).on('pageinit', '#contacto', function(){
+
+        $("#submit").on('click', function(){
+          $.ajax({
+                data: $("#form-message").serialize(),
+                url: 'http://www.danielagarcia.com.ar/enviomail12344123232123123132123213123.php',
+                dataType: "json",
+                async: true,
+                
+                beforeSend: function() {
+                    $.mobile.loading('show', {
+                        theme: "a",
+                        textonly: false,
+                        textVisible: false
+                   });
+                },
+                complete: function() {
+                     $.mobile.loading('hide', {});
+                },
+                success: function (resultados) {
+                }
+          });
+          $('#form-message')[0].reset(); 
+            $.alert("El mensaje fue enviado con éxito");
+        });
+    });
+  </script>  
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta charset="utf-8">
+
+        <title>Daniela Garcia</title>
+
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <link href="css/twentytwenty.css" rel="stylesheet" type="text/css" />        
+        <link rel="icon" href="img/logo.png" type="image/x-icon"/>  
+        
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/index.js"></script>
+      
+        <script src="js/jquery.event.move.js"></script>
+        <script src="js/jquery.twentytwenty.js"></script>
+        
+</head>
+
+<body>
+       <div data-role="page" data-ajax="false" id="principal" class="main-content animated fadeInLeft">
+             
+             <div class="tabBar" data-role="header" data-position="fixed" style=" background: #5f5d8e none repeat scroll 0 0; color: white; margin: 0 !important; padding-bottom: 0 !important; padding-left: 0 !important; padding-right: 0 !important; padding-top: 9px; text-align: left;" >
+                <h1 style="color:white; text-transform: uppercase;">Daniela Garcia</h1>
+             </div>
+            
+            <div data-role="main" class="ui-content">
+
+                <div class="systemMessage error" id="error_div" style="display:none">
+                        <h3><i class="material-icons md-20">error</i> Oops, algo no está bien.</h3>
+                        <h2 id="error_descripcion">No hay conección.</h2>
+                 </div>
+        
+                <a href="principal.html" data-role="image" class="ui-link" style="">
+                    <div style=" text-align:center">
+                        <img style="width: 100%; height: 200px;" src="img/principal.png">
+                    </div>
+                </a>
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li>
+                        <a href="comunicacion.html" data-ajax="false"  style="color: #3b5998;">Comunicación</a>
+                    </li>
+                     <li>
+                        <a href="gestion.html" data-ajax="false"  style="color: #3b5998;">Gestión</a>
+                    </li>
+                    <li>
+                        <a href="genero.html" data-ajax="false"  style="color: #3b5998;">Género</a>
+                    </li>
+                    <li>
+                        <a href="transparencia.html" data-ajax="false"  style="color: #3b5998;">Transparencia</a>
+                    </li>
+                   
+                </ul>
+            <div data-role="navbar" data-iconpos="">
+                    <ul>
+                        <li>
+                            <a href="facebook.html" data-ajax="false" style="background: #3b5998; border-color: white; color: white">Facebook</a>
+                        </li>
+                        <li>
+                            <a href="twitter.html" data-ajax="false" style="background: #00aced; border-color: white; color: white">Twitter</a>
+                        </li>
+                        <li>
+                            <a href="instagram.html" data-ajax="false" style="background: #517fa4; border-color: white; color: white">Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          
+
+             <div class="tabBar background-color-lightGray color-midGray" data-role="footer"data-position="fixed">
+                      <div>
+                        <ul>
+                             <li class="active">
+                                <a href="principal.html" data-ajax="false"><i class="material-icons md-20">home</i></a>
+                            </li>
+                            <li>
+                                <a href="quiensoy.html" data-ajax="false"><i class="material-icons md-20">person</i></a>
+                            </li>
+
+                            <li>
+                                <a href="asesores.html" data-ajax="false"><i class="material-icons md-20">group</i></a>
+                            </li>
+                            <li>
+                                <a href="contacto.html" data-ajax="false"><i class="material-icons md-20">mail</i></a>
+                            </li>
+                            <li>
+                                <a id="salir" onclick="salir()" data-ajax="false"><i class="material-icons md-20">settings_power</i></a>
+                            </li>
+                        </ul>
+                     </div>
+              </div>
+          
+        </div>
+    </body>
+
+    
+
+</html>
